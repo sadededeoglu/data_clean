@@ -36,22 +36,9 @@ with open("C:\\python\\proje\\raw","r",encoding = "utf-8") as file:
 
 duplic=pd.concat([df_alarm,df_raw])
 not_alarm=duplic.drop_duplicates(keep=False)
+not_alarm.drop(columns=['devname','devid','authserver','ccode'], inplace=True)
+df_alarm.drop(columns=['devname','devid','authserver','ccode'], inplace=True)
+
+"""
 not_alarm.to_excel(r'C:\python\proje\not_alarm.xlsx', index = False)
-
-    
-    
-
-
-
-    
-    
-    
-    
-    
-        
-          
-
-            
-
-    
-   
+alarm_df=df_alarm.to_excel(r'C:\python\proje\alarm.xlsx', index = False)"""

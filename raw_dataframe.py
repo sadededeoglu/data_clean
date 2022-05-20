@@ -1,9 +1,8 @@
 import re
 import pandas as pd
 import numpy as np
-from alarm_dataframe import df_alarm
 
-with open("C:\\python\\proje\\raw","r",encoding = "utf-8") as file:
+with open(r"alert","r",encoding = "utf-8") as file:
     liste = file.readlines()
     deneme = [re.split(":=",entry,1) for entry in liste]
     
@@ -14,7 +13,7 @@ with open("C:\\python\\proje\\raw","r",encoding = "utf-8") as file:
         sepet= [""]
         for deger in a:
             
-            if deger == " " :
+            if deger == " ":
                 
                 if sepet[-1].isalpha() or sepet[-1] == "&" or sepet[-1] == "-" or sepet[-1] == ":" or sepet[-1] == "_":
                     kelime = deger.replace(" ","_")
@@ -32,13 +31,4 @@ with open("C:\\python\\proje\\raw","r",encoding = "utf-8") as file:
 
         ondata.append(dicti)
     
-    df_raw= pd.DataFrame(ondata)
-
-duplic=pd.concat([df_alarm,df_raw])
-not_alarm=duplic.drop_duplicates(keep=False)
-not_alarm.drop(columns=['devname','devid','authserver','ccode'], inplace=True)
-df_alarm.drop(columns=['devname','devid','authserver','ccode'], inplace=True)
-
-"""
-not_alarm.to_excel(r'C:\python\proje\not_alarm.xlsx', index = False)
-alarm_df=df_alarm.to_excel(r'C:\python\proje\alarm.xlsx', index = False)"""
+df_alarm= pd.DataFrame(ondata)

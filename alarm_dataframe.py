@@ -2,7 +2,7 @@ import re
 import pandas as pd
 import numpy as np
 
-with open("C:\\python\\proje\\alarm","r",encoding = "utf-8") as file:
+with open(r"alert","r",encoding = "utf-8") as file:
     liste = file.readlines()
     deneme = [re.split(":=",entry,1) for entry in liste]
     
@@ -31,5 +31,4 @@ with open("C:\\python\\proje\\alarm","r",encoding = "utf-8") as file:
 
         ondata.append(dicti)
     
-    df_alarm= pd.DataFrame(ondata)
-    
+df_alarm= pd.DataFrame(ondata)
